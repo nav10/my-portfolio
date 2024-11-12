@@ -23,7 +23,7 @@
     <!-- About Section -->
     <section id="about">
         <h2>About Me</h2>
-        <p>I'm Navjot, but you can call me Navi. I'm your typical nerd who loves anything tech and gaming. When I'm not staring at a screen, I enjoy reading and writing as I dabble in poetry from time to time. I don't have much coding experience, but I'm always eager to learn so bring it on!</p>
+        <p>I'm Navjot, but you can call me Navi. I'm your typical nerd who loves anything tech and gaming. When I'm not staring at a screen, I enjoy reading and writing as I dabble in poetry from time to time. I didn't have much coding experience, until I started taking this program, and now I'm learning more everyday! Still just getting started.</p>
     </section>
 
     <!-- Projects Section -->
@@ -52,7 +52,21 @@
     <!-- Contact Section -->
     <section id="contact">
         <h2>Contact Me</h2>
-        <p>In the future, this will be a contact form. For now, just leave this as a placeholder.</p>
+        <form id="contact-form">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required placeholder="Your Name">
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required placeholder="Your Email">
+            </div>
+            <div>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required placeholder="Your Message"></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+        </form>
     </section>
 
     <!-- Footer Section -->
