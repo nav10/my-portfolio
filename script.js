@@ -1,3 +1,17 @@
+//fetch a random quote from the API Ninjas Quotes API
+fetch('https://api.api-ninjas.com/v1/quotes?category=inspirational', {
+    headers: { 'X-Api-Key': 'k3leQtmeOp2QMg0ueEpTUw==cqYetIwrfqzseikQ' }
+})
+.then(response => response.json())
+.then(data => {
+    //select the element and display the quote
+    const quoteElement = document.getElementById('quote');
+    quoteElement.innerText = `Quote of The Day: "${data[0].quote}"`;
+})
+.catch(error => {
+    console.error('Error fetching the quote:', error);
+});
+
 //select all the detail buttons
 const detailButtons = document.querySelectorAll('.details-btn');
 
