@@ -12,6 +12,34 @@ fetch('https://api.api-ninjas.com/v1/quotes?category=inspirational', {
     console.error('Error fetching the quote:', error);
 });
 
+const themeToggleButton = document.getElementById('theme-toggle');
+const body = document.body;
+
+//check local storage for theme preference
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    body.classList.add(savedTheme);
+    updateButtonText(savedTheme);
+}
+
+//event listener to toggle button
+themeToggleButton.addEventListener('click', () => {
+    if (body.classList.contains('light-mode')) {
+        body.classList.remove('light-mode');
+        localStorage.setItem('theme', ''); //save preference
+        updateButtonText('dark-mode');
+    } else {
+        body.classList.add('light-mode');
+        localStorage.setItem('theme', 'light-mode'); //save preference
+        updateButtonText('light-mode');
+    }
+});
+
+//update button text based on current mode
+function updateButtonText(mode) {
+    themeToggleButton.textContent = mode === 'light-mode' ? 'Switch to Dark Mode' : 'Switch to Light Mode';
+}
+
 //select all the detail buttons
 const detailButtons = document.querySelectorAll('.details-btn');
 
