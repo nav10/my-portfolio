@@ -12,32 +12,37 @@ fetch('https://api.api-ninjas.com/v1/quotes?category=inspirational', {
     console.error('Error fetching the quote:', error);
 });
 
-const themeToggleButton = document.getElementById('theme-toggle');
+const themeToggleButton = document.getElementById("theme-toggle");
+const themeIcon = document.getElementById("theme-icon");
 const body = document.body;
 
-//check local storage for theme preference
-const savedTheme = localStorage.getItem('theme');
+//check saved theme from localStorage
+const savedTheme = localStorage.getItem("theme");
 if (savedTheme) {
     body.classList.add(savedTheme);
-    updateButtonText(savedTheme);
+    updateIcon(savedTheme);
 }
 
-//event listener to toggle button
-themeToggleButton.addEventListener('click', () => {
-    if (body.classList.contains('light-mode')) {
-        body.classList.remove('light-mode');
-        localStorage.setItem('theme', ''); //save preference
-        updateButtonText('dark-mode');
+//event listener for theme toggle
+themeToggleButton.addEventListener("click", () => {
+    if (body.classList.contains("light-mode")) {
+        body.classList.remove("light-mode");
+        localStorage.setItem("theme", "dark-mode"); //save preference
+        updateIcon("dark-mode");
     } else {
-        body.classList.add('light-mode');
-        localStorage.setItem('theme', 'light-mode'); //save preference
-        updateButtonText('light-mode');
+        body.classList.add("light-mode");
+        localStorage.setItem("theme", "light-mode"); //save preference
+        updateIcon("light-mode");
     }
 });
 
-//update button text based on current mode
-function updateButtonText(mode) {
-    themeToggleButton.textContent = mode === 'light-mode' ? 'Switch to Dark Mode' : 'Switch to Light Mode';
+//update icon based on the theme
+function updateIcon(theme) {
+    if (theme === "light-mode") {
+        themeIcon.innerHTML = "&#9728;"; //sun icon
+    } else {
+        themeIcon.innerHTML = "&#9790;"; //moon icon
+    }
 }
 
 //select all the detail buttons
@@ -118,3 +123,23 @@ function clearError(input) {
     const errorSpan = input.nextElementSibling;
     errorSpan.textContent = '';
 }
+
+//select the back to top button
+const backToTopButton = document.getElementById("back-to-top");
+
+//show the button when scrolling down
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) { //show when scrolled 300px down
+        backToTopButton.classList.add("show");
+    } else {
+        backToTopButton.classList.remove("show");
+    }
+});
+
+//scroll back to top when button is clicked
+backToTopButton.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});

@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
@@ -197,6 +201,42 @@ body.light-mode button[type="submit"]:hover {
     display: block;
 }
 
+/* Skills Section */
+#skills {
+    padding: 20px;
+    margin: 20px;
+    background-color: #1e1e1e;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.light-mode #skills {
+    background-color: #f9f9f9;
+    color: #000000;
+}
+
+.skills-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-items: center; 
+    align-items: center; 
+}
+
+.skill {
+    text-align: center;
+}
+
+.skill-logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: filter 0.3s;
+}
+
 /* Footer Styles */
 footer {
     background-color: #333;
@@ -213,21 +253,58 @@ body.light-mode footer {
     color: #000000;
 }
 
-/* Toggle Button Styles */
+/* dark/light them toggle */
 .theme-toggle {
-    margin-top: 10px;
-    padding: 8px 12px;
+    position: fixed;
+    top: 20px;
+    right: 20px; 
     background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 50%;
+    padding: 10px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    z-index: 1000;
 }
 
-body.light-mode .theme-toggle {
+.theme-toggle:hover {
     background-color: #388e3c;
+}
+
+#theme-icon {
+    font-size: 15px;
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 20px; 
+    right: 20px; 
+    background-color: #4CAF50;
     color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000; 
+}
+
+.back-to-top:hover {
+    background-color: #388e3c;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
 }
 
 /* Media Queries for Mobile Devices */
@@ -235,6 +312,11 @@ body.light-mode .theme-toggle {
     .gallery {
         grid-template-columns: 1fr; /* switch to a single column for smaller screens */
     }
+
+    .skills-gallery {
+        grid-template-columns: 1fr; /* single column on smaller screens */
+    }
+
     header, footer {
         padding: 10px;
     }
